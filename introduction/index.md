@@ -1,8 +1,9 @@
 # Selendroid 简介
 
-本章将简单介绍下 Selendroid。
+本章将简单介绍 Selendroid。
 
 什么是 Selendroid？
 
-和其他框架的区别？
+Selendroid 有什么优势？
 
+它和其他框架的区别？
