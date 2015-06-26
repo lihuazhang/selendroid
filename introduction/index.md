@@ -4,6 +4,4 @@
 
 什么是 Selendroid？
 
-Selendroid 有什么优势？
-
-它和其他框架的区别？
+Selendroid 和其他框架的区别？
