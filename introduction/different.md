@@ -11,8 +11,9 @@ Android 基于 UI 层面的自动化测试工具，都可以理解为是基于 *
 Selendroid 属于第二种，基于 Instrumentation。那么什么是 Instrumentation？
 
 >This object is natively to the Java language, but in Android it has the main role of controlling the life cycle of an application. An Android application has specific life cycle that cannot be broken.The instrumentation has an ability to run code before each one of these events. This ability is used to inject relevant test code and allow test automation.
-
 ![](/imgs/instrumentation.png)
+
+
 
 简单来说， instrumentation 通过插入安卓应用的生命周期来注入自动化行为。所以这也注定了 Selendroid 框架的一些特点：
 
