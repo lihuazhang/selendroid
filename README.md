@@ -1,4 +1,4 @@
-# Selendroid 小书
+# Selendroid 中文简明教程
 
 最近在培训 Appium，Selendroid 是不可分割的一部分。国内 Selendroid 的资料非常少，很多学生都抱怨找不到资料。于是讲课之余想到干脆写本小书出来。
 

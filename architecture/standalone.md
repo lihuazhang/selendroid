@@ -6,7 +6,7 @@ Selendroid Server 启动的 HttpServer 在设备中，客户端测试脚本在 P
 
 客户端脚本怎么知道去哪个设备执行用例呢？
 
-这些问题就要问 Selendroid 的大总管 —— Selendroid-Standalone。
+这些问题就要问 Selendroid 的大总管 —— **Selendroid-Standalone**。
 
 Selendroid-Standalone 在 selendroid-client 和 selendroid-server 之间扮演了一个代理的角色。
 
