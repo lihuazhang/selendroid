@@ -1,0 +1,2 @@
+# Selendroid Desired Capabilities
+

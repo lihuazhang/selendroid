@@ -2,7 +2,7 @@
 
 测试用例只需遵循 Selenium 2 client API 来写就可以了。 JAVA，Python， Ruby 都可以。
 
-*java 代码*
+**java 代码**
 
 ```java
 SelendroidCapabilities capa = new SelendroidCapabilities("io.selendroid.testapp:0.15.0");
@@ -14,7 +14,7 @@ Assert.assertEquals("Selendroid", inputField.getText());
 driver.quit();
 ```
 
-*python 代码*
+**python 代码**
 
 ```python
 '''
@@ -49,6 +49,122 @@ if __name__ == '__main__':
     unittest.main()
 
 ```
+
+### Hello, World!
+
+不免俗套，我们使用 selendroid-test-app 来做一个输入 `Hello,World!`，然后验证下输入是否正确。这里我会 step by step 的讲一下。
+
+1. 创建一个 maven 项目。
+
+    无论你是使用 eclipse 还是 intellijidea，创建 maven 项目都应该是你本来就会的。或者你可以直接使用命令行，
+    ```bash
+     mvn archetype:generate -DgroupId=com.testerhome -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
+    执行完毕后，我们会看到如下的目录结构：
+    ```bash
+    ├── pom.xml
+    └── src
+    ├── main
+    │    └── java
+    │       └── com
+    │           └── testerhome
+    │               └── App.java
+    └── test
+        └── java
+            └── com
+                └── testerhome
+                    └── AppTest.java
+
+    ```
+
+    我们的 pom.xml 如下：
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+        <groupId>testerhome</groupId>
+        <artifactId>selendroid_test</artifactId>
+        <version>1.0-SNAPSHOT</version>
+
+        <dependencies>
+            <dependency>
+                <groupId>io.selendroid</groupId>
+                <version>0.12.0</version>
+                <artifactId>selendroid-standalone</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>io.selendroid</groupId>
+                <version>0.12.0</version>
+                <artifactId>selendroid-client</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-library</artifactId>
+                <version>1.3</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </project>
+    ```
+
+    注意：这边用到了 Selendroid 的两个依赖，一个是standalone，一个是 client。事实上，你并不会用到 standalone 这个包，除非你想在代码中启动或关闭 standalone server。我们一般都在命令行手动启动。
+
+2. `mvn clean install` 把依赖下载过来。
+3. 然后打开你喜欢的 IDE 导入项目，就可以开始写脚本。
+4. 我们的代码是这样的：
+
+    ```java
+
+        public class SelendroidNativeTest {
+
+        private SelendroidDriver driver = null;
+        public static final String NATIVE_APP = "NATIVE_APP";
+        protected static final String HOMESCREEN_ACTIVITY = "and-activity://io.selendroid.testapp.HomeScreenActivity";
+        protected static final String TOUCH_ACTIVITY = "and-activity://io.selendroid.testapp.TouchGesturesActivity";
+        protected void openStartActivity() {
+            driver.context(NATIVE_APP);
+            driver.get(HOMESCREEN_ACTIVITY);
+        }
+
+        @Before
+        public void setup() throws Exception {
+            DesiredCapabilities cap = new SelendroidCapabilities("io.selendroid.testapp:0.16.0-SNAPSHOT");
+            driver = new SelendroidDriver(cap);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        }
+
+        @After
+        public void teardown() {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
+
+        @Test
+        public void inputBoxTest() {
+
+            WebElement inputField = driver.findElement(By.id("my_text_field"));
+            Assert.assertEquals("true", inputField.getAttribute("enabled"));
+            inputField.sendKeys("Hello, World!");
+            Assert.assertEquals("Hello, World!", inputField.getText());
+
+        }
+    ```
+5. 启动 Selendroid-standalone-server：
+    ```
+    java -jar selendroid-standalone-0.16.0-SNAPSHOT-with-dependencies.jar -app selendroid-test-app-0.16.0-SNAPSHOT.apk
+    ```
+6. 运行测试用例（Junit 的运行方式）。
 
 ### 一个用例的生命过程
 
