@@ -19,3 +19,8 @@ Selendroid-Standalone 在 selendroid-client 和 selendroid-server 之间扮演�
 5. 将设备上的端口 forward 到 pc 机，打通selendroid-client 和 selendroid-server 之间的通讯。
 6. 实现了一些额外的接口，比如通过 adb 执行命令。
 
+另外，大管家还维护两个池子：
+
+1. **deviceStore**： 大管家启动的时候，会找到机器上所有的 android 模拟器和连接的 android 设备，把这些设备信息添加到 deviceStore 中去，以备后续脚本使用。（大管家有两个监听器，分别对模拟器和真机的变化做监听，这样就可以实时更新池子。）
+
+2. **appStore**：我们启动大管家的时候会传 aut 给他，大管家会把这个 aut 加入到 appStore 中去。

@@ -15,7 +15,6 @@
    * [启动 Selendroid](installation/start-selendroid.md)
    * [第一个测试用例](installation/first-selendroid-test.md)
 * [Selendroid 的 Desired Capabilities](caps/index.md)
-  * [SelendroidCapabilities](caps/selendroidcapabilities.md)
-  * [设备描述](caps/devices.md)
-  * [Java 语言描述](caps/java_desc.md)
-  * [Python 语言描述](caps/python_desc.md)
+   * [SelendroidCapabilities](caps/selendroidcapabilities.md)
+   * [其他语言描述](caps/other_lang_desc.md)
+
