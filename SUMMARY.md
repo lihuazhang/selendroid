@@ -17,4 +17,5 @@
 * [Selendroid 的 Desired Capabilities](caps/index.md)
    * [SelendroidCapabilities](caps/selendroidcapabilities.md)
    * [其他语言描述](caps/other_lang_desc.md)
+* [Native 应用测试](native_app/index.md)
 
