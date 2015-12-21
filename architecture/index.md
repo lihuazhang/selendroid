@@ -1,6 +1,6 @@
 # 基本组件
 
-![](architecture.png)
+![](../imgs/architecture.png)
 
 Selendroid 有四大组件：
 
